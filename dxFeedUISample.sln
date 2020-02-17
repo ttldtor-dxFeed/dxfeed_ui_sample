@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dxFeedUISample", "dxFeedUISample\dxFeedUISample.csproj", "{15A67A35-36E2-4467-99A2-B33B1B8A05B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15A67A35-36E2-4467-99A2-B33B1B8A05B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15A67A35-36E2-4467-99A2-B33B1B8A05B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15A67A35-36E2-4467-99A2-B33B1B8A05B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15A67A35-36E2-4467-99A2-B33B1B8A05B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADC6D084-18E0-429E-BB2E-3A83ED37AD1E}
+	EndGlobalSection
+EndGlobal

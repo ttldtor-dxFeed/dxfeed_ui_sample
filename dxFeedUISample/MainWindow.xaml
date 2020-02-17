@@ -1,0 +1,50 @@
+﻿<Window x:Class="dxFeedUISample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dxFeedUISample"
+        xmlns:data="clr-namespace:com.dxfeed.api.data;assembly=dxf_api"
+        mc:Ignorable="d"
+        Title="dxFeed UI Sample" Height="768" Width="1024" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="DataFromEnum" MethodName="GetValues"
+                            ObjectType="{x:Type data:EventType}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="data:EventType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="144"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="64"/>
+            <ColumnDefinition Width="192"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="37" MaxWidth="37" MinWidth="37"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" MaxHeight="32" MinHeight="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="289*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="SymbolLabel" Content="Symbol:" HorizontalContentAlignment="Right" Margin="5,0,0,0"/>
+        <TextBox x:Name="SymbolTextBox" Grid.Column="1" Margin="0,0,5,0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
+        <Label x:Name="TypeLabel" Content="Event Type:" HorizontalContentAlignment="Right" Grid.Row="1" Margin="5,0,0,0"/>
+        <ComboBox x:Name="TypeComboBox" Grid.Column="1" Margin="0,5,5,5" VerticalAlignment="Center" Height="22" Grid.Row="1" ItemsSource="{Binding Source={StaticResource DataFromEnum}}" SelectionChanged="TypeComboBox_SelectionChanged"/>
+        <Label x:Name="SourceLabel" Content="Event Source\Suffix:" HorizontalContentAlignment="Right" Grid.Row="2" Margin="5,0,0,0"/>
+        <TextBox x:Name="SourceTextBox" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" RenderTransformOrigin="0.51,3.91" Grid.Row="2" Margin="0,0,5,0" IsEnabled="False" CharacterCasing="Upper"/>
+        <Button x:Name="AddButton" Content="Add" Grid.Row="3" Grid.ColumnSpan="2" Margin="5" Click="AddButton_Click"/>
+        <ListView x:Name="SubscriptionListView" Grid.ColumnSpan="2" Grid.Row="4" Margin="5" MouseDoubleClick="SubscriptionListView_MouseDoubleClick" ToolTip="Double click to unsubscribe"/>
+        <Label x:Name="AddressLabel" Content="Address:" HorizontalContentAlignment="Right" Grid.Column="3" Margin="5,0,0,0"/>
+        <TextBox x:Name="AddressTextBox" Grid.Column="4" TextWrapping="Wrap" Text="demo.dxfeed.com:7300" VerticalContentAlignment="Center" Margin="0,0,5,0"/>
+        <Button x:Name="ConnectButton" Grid.ColumnSpan="2" Content="Connect" Grid.Column="3" Margin="5" Grid.Row="1" Click="ConnectButton_Click"/>
+        <Ellipse x:Name="Ping" Grid.Column="6" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="32" Stroke="Black" VerticalAlignment="Top" Width="32" MinWidth="32" MinHeight="32"/>
+        <ListView x:Name="LogListView" Grid.ColumnSpan="4" Grid.Column="3" Margin="5" Grid.Row="2" Grid.RowSpan="3"/>
+        <CheckBox x:Name="AutoScrollCheckBox" Content="Auto Scroll" Grid.Column="5" Margin="5" Grid.Row="1" Height="22" Width="101" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsChecked="True"/>
+    </Grid>
+</Window>
