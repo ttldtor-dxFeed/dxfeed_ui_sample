@@ -6,7 +6,7 @@ namespace dxFeedUISample.Collections
 {
     public class RangeObservableCollection<T> : ObservableCollection<T>
     {
-        private bool _suppressNotification = false;
+        private bool _suppressNotification;
 
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
@@ -33,9 +33,6 @@ namespace dxFeedUISample.Collections
 
             if (count > 0)
             {
-                /*OnCollectionChanged(
-                    new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, enumerable));*/
-
                 OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
             }
         }
@@ -51,17 +48,13 @@ namespace dxFeedUISample.Collections
             if (Count < index + count)
                 count = Count - index;
 
-            var removed = new List<T>(count);
-
             for (var i = 0; i < count; i++)
             {
-                removed.Add(Items[0]);
-                RemoveAt(Count - 1);
+                RemoveAt(index);
             }
 
             _suppressNotification = false;
 
-            //OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, removed, index));
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 

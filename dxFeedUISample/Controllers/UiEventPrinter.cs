@@ -24,8 +24,6 @@ namespace dxFeedUISample.Controllers
         private const int LogSize = 30000;
         private readonly RangeObservableCollection<string> _log = new RangeObservableCollection<string>();
 
-        public event EventHandler Printed;
-
         public void Print(string text)
         {
             Application.Current?.Dispatcher?.BeginInvoke(new Action(() =>
@@ -36,8 +34,6 @@ namespace dxFeedUISample.Controllers
                 {
                     _log.RemoveAt(_log.Count - 1);
                 }
-
-                Printed?.Invoke(this, EventArgs.Empty);
             }), DispatcherPriority.Render);
         }
 
@@ -51,8 +47,6 @@ namespace dxFeedUISample.Controllers
                 {
                     _log.RemoveRange(_log.Count - LogSize);
                 }
-
-                Printed?.Invoke(this, EventArgs.Empty);
             }), DispatcherPriority.Render);
         }
 
